@@ -16,12 +16,13 @@ or implied.
 
 [cmdletbinding()]
 param(
+#supply powershell CLI parameter for desired server profile name
     [parameter(Mandatory = $true)]
     [string]$ServerProfileName,
-
+#supply powershell CLI parameter for already claimed unconfigured Cisco UCS server
     [parameter(Mandatory = $true)]
     [string]$ServerSerialNumber,
-
+#supply powershell CLI parameter for existing server profile template name used to create new server profile
     [parameter(Mandatory = $true)]
     [string]$ServerProfileTemplateName
 )
