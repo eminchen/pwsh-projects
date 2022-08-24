@@ -18,6 +18,8 @@ or implied.
 param(
     [parameter(Mandatory = $true)]
     [string]$ServerProfileTemplateName
+    [parameter(Mandatory = $true)]
+    [string]$ServerProfileName
 )
 
 # configure api signing params
@@ -27,6 +29,6 @@ $source = Get-IntersightServerProfileTemplate -Name $ServerProfileTemplateName
 
 $orgRef = Get-IntersightOrganizationOrganization -Name default
 
-$targetProfile = Initialize-IntersightServerProfile -Name cloned-server-profile -Description "cloned from template" -Organization (Get-IntersightMoMoRef -ManagedObject ($orgRef))
+$targetProfile = Initialize-IntersightServerProfile -Name $ServerProfileName -Description "cloned from template" -Organization (Get-IntersightMoMoRef -ManagedObject ($orgRef))
 
 New-IntersightBulkMoCloner -Sources $source -Targets $targetProfile
